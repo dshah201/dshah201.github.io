@@ -15,31 +15,62 @@ import {
 
 const projects = [
   {
-    type: 'digit',
+    type: 'retina',
     number: '01',
+    category: 'Netramind Innovations',
+    title: 'Retinal Image Segmentation',
+    meta: 'PyTorch · U-Net++ · Medical Imaging',
+    text: 'A computer vision pipeline for segmenting retinal non-perfusion regions in fluorescein angiography images.',
+    result: 'Preprocessing · training · Dice / IoU evaluation',
+  },
+  {
+    type: 'generation',
+    number: '02',
+    category: 'Lockheed Martin',
+    title: 'Generative Image Service',
+    meta: 'Python · SDXL · REST APIs',
+    text: 'An internal service for generating and processing images with configurable model parameters and automated workflows.',
+    result: 'API design · model orchestration · image processing',
+  },
+  {
+    type: 'airfoil',
+    number: '03',
+    category: 'University of Florida',
+    title: 'Transonic Airfoil Simulation',
+    meta: 'Python · FORTRAN · Numerical Methods',
+    text: 'Simulation software used to study airflow around airfoils under several transonic flight conditions.',
+    result: 'Mach 0.5–1.5 · aerodynamic modeling',
+    link: '/papers/CFD-Analysis-of-Airfoil-Shapes.pdf',
+    linkLabel: 'View research paper',
+  },
+  {
+    type: 'digit',
+    number: '04',
     category: 'Personal ML project',
     title: 'Draw-a-Digit',
     meta: 'Python · TensorFlow · Neural Networks',
     text: 'An interactive digit classifier trained on MNIST. Users can draw a number and see the model’s prediction and confidence scores.',
     result: 'Interactive prediction UI',
-  },
-  {
-    type: 'app',
-    number: '02',
-    category: 'iOS project',
-    title: 'Mighty Calculator',
-    meta: 'Swift · iOS · App Store',
-    text: 'A multi-purpose calculator and converter that I designed and built in Swift.',
-    result: '200+ downloads · 5.0 rating',
+    link: 'https://github.com/dshah201/drawing-digits-nn',
+    linkLabel: 'View GitHub repository',
   },
   {
     type: 'sensor',
-    number: '03',
+    number: '05',
     category: 'Embedded systems',
     title: 'Embedded Sensor Monitor',
     meta: 'C/C++ · Microcontrollers · I2C',
     text: 'A microcontroller project that reads temperature sensors over I2C and displays the measurements on an LCD.',
     result: 'Sensor-to-display prototype',
+  },
+  {
+    type: 'app',
+    number: '06',
+    category: 'iOS project',
+    title: 'Mighty Calculator',
+    meta: 'Swift · iOS · App Store',
+    text: 'A multi-purpose calculator and converter that I designed and built in Swift.',
+    result: '200+ downloads · 5.0 rating',
   },
 ]
 
@@ -89,7 +120,6 @@ const panels = [
 ]
 
 const resumes = [
-  ['AI / ML', 'Vision, deep learning, and intelligent systems', '/resumes/Dhruv-Shah-AI-ML-Resume.pdf'],
   ['Hardware', 'Circuits, sensors, and embedded systems', '/resumes/Dhruv-Shah-Hardware-Resume.pdf'],
   ['Software', 'APIs, applications, and algorithms', '/resumes/Dhruv-Shah-Software-Resume.pdf'],
 ]
@@ -159,34 +189,47 @@ function Exosuit({ activeZone }) {
 
 function PanelContent({ id }) {
   if (id === 'projects') {
-    return <div className="project-gallery">{projects.map((project) => (
-      <article className="project-case" key={project.title}>
-        <ProjectVisual type={project.type} />
-        <div className="project-case-copy">
-          <div className="project-overline"><span>{project.number}</span>{project.category}</div>
-          <h3>{project.title}</h3>
-          <small>{project.meta}</small>
-          <p>{project.text}</p>
-          <strong>{project.result}</strong>
-        </div>
-      </article>
-    ))}</div>
+    return <>
+      <div className="project-index">
+        <div className="index-orb"><i /><i /><span>06</span></div>
+        <div><small>PROJECT INDEX</small><strong>Six technical case studies</strong></div>
+        <span className="index-state"><i /> ONLINE</span>
+      </div>
+      <div className="project-gallery">{projects.map((project) => (
+        <article className={`project-case ${project.link ? 'project-linked' : ''}`} key={project.title}>
+          <ProjectVisual type={project.type} />
+          <div className="project-case-copy">
+            <div className="project-overline"><span>{project.number}</span>{project.category}</div>
+            <h3>{project.title}</h3>
+            <small>{project.meta}</small>
+            <p>{project.text}</p>
+            <strong>{project.result}</strong>
+            {project.link && <a className="project-card-link" href={project.link} target="_blank" rel="noreferrer" aria-label={`${project.linkLabel}: ${project.title}`}>
+              <span>{project.linkLabel}</span><ExternalLink size={15} />
+            </a>}
+          </div>
+        </article>
+      ))}</div>
+    </>
   }
 
   if (id === 'experience') {
-    return <div className="timeline">
-      <article><time>2026</time><div><h3>Netramind Innovations</h3><small>AI/ML Medical Imaging Intern</small><p>Developing deep-learning pipelines for retinal ischemia segmentation.</p></div></article>
-      <article><time>2025</time><div><h3>Lockheed Martin</h3><small>Software Engineering Intern</small><p>Built a generative-image platform using SDXL, Python APIs, and model orchestration.</p></div></article>
-      <article><time>2024</time><div><h3>University of Florida</h3><small>Computational Research Assistant</small><p>Developed transonic airfoil simulation software in Python and FORTRAN.</p></div></article>
-      <article><time>CMU</time><div><h3>First-Year Orientation</h3><small>Orientation Counselor</small><p>Helped welcome incoming students and supported them through their transition to Carnegie Mellon.</p></div></article>
-    </div>
+    return <>
+      <div className="timeline">
+        <article><time>2026</time><OrgLogo type="netramind" /><div><h3>Netramind Innovations</h3><small>AI/ML Medical Imaging Intern</small><p>Developing deep-learning pipelines for retinal ischemia segmentation.</p></div></article>
+        <article><time>2025</time><OrgLogo type="lockheed" /><div><h3>Lockheed Martin</h3><small>Software Engineering Intern</small><p>Built a generative-image platform using SDXL, Python APIs, and model orchestration.</p></div></article>
+        <article><time>2024</time><OrgLogo type="uf" /><div><h3>University of Florida</h3><small>Computational Research Assistant</small><p>Developed transonic airfoil simulation software in Python and FORTRAN.</p><a className="experience-link" href="/papers/CFD-Analysis-of-Airfoil-Shapes.pdf" target="_blank" rel="noreferrer">View paper <ExternalLink size={14} /></a></div></article>
+        <article><time>CMU</time><OrgLogo type="cmu" /><div><h3>First-Year Orientation</h3><small>Orientation Counselor</small><p>Helped welcome incoming students and supported them through their transition to Carnegie Mellon.</p></div></article>
+      </div>
+      <p className="trademark-note">Organization names and marks belong to their respective owners and are shown only to identify affiliations. No endorsement is implied.</p>
+    </>
   }
 
   if (id === 'academics') {
     return <div className="academic-card">
       <GraduationCap size={38} />
       <h3>Carnegie Mellon University</h3>
-      <p>B.S. in Electrical and Computer Engineering<br />Planned minor in Artificial Intelligence</p>
+      <p>B.S. in Electrical and Computer Engineering<br />Minor in Artificial Intelligence</p>
       <strong>3.73 QPA</strong>
       <div className="academic-honor"><Award size={19} /> Dean’s List</div>
       <div className="course-tags">
@@ -221,6 +264,17 @@ function PanelContent({ id }) {
   </div>
 }
 
+function OrgLogo({ type }) {
+  const logos = {
+    netramind: ['/logos/netramind.png', 'Netramind Innovations'],
+    lockheed: ['/logos/lockheed.png', 'Lockheed Martin'],
+    uf: ['/logos/uf.png', 'University of Florida'],
+    cmu: ['/logos/cmu.png', 'Carnegie Mellon University'],
+  }
+  const [src, alt] = logos[type]
+  return <div className={`org-logo ${type}-logo`}><img src={src} alt={`${alt} logo`} /></div>
+}
+
 function ProjectVisual({ type }) {
   if (type === 'digit') {
     return <div className="project-visual digit-visual">
@@ -250,6 +304,42 @@ function ProjectVisual({ type }) {
     </div>
   }
 
+  if (type === 'retina') {
+    return <div className="project-visual retina-visual">
+      <div className="retina-frame original">
+        <div className="retina-eye"><i /></div>
+        <small>INPUT</small>
+      </div>
+      <div className="retina-frame mask"><div className="retina-mask mask-solid" /><small>MASK</small></div>
+      <div className="retina-frame mask"><div className="retina-mask mask-vessels" /><small>VESSELS</small></div>
+      <div className="retina-frame mask"><div className="retina-mask mask-region" /><small>REGION</small></div>
+      <div className="analysis-scan" />
+    </div>
+  }
+
+  if (type === 'generation') {
+    return <div className="project-visual generation-visual">
+      <div className="generation-node input-node"><small>REQUEST</small><strong>JSON</strong></div>
+      <div className="generation-path"><i /><i /><i /></div>
+      <div className="generation-core"><span>SDXL</span><i /></div>
+      <div className="generation-path"><i /><i /><i /></div>
+      <div className="generation-node output-node"><small>OUTPUT</small><strong>IMG</strong></div>
+      <div className="generation-status">MODEL PIPELINE // READY</div>
+    </div>
+  }
+
+  if (type === 'airfoil') {
+    return <div className="project-visual airfoil-visual">
+      {['0.5', '0.8', '1.2', '1.5'].map((mach, index) => (
+        <div className={`flow-cell flow-${index + 1}`} key={mach}>
+          <div className="flow-field"><i className="airfoil-shape" /><span /></div>
+          <small>M {mach}</small>
+        </div>
+      ))}
+      <div className="analysis-scan" />
+    </div>
+  }
+
   return null
 }
 
@@ -265,6 +355,9 @@ function App() {
   const [activePanel, setActivePanel] = useState(null)
   const [hoveredPanel, setHoveredPanel] = useState(null)
   const panel = panels.find((item) => item.id === activePanel)
+  const hoveredSection = panels.find((item) => item.id === hoveredPanel)
+  const hour = new Date().getHours()
+  const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening'
 
   return (
     <main className="portfolio">
@@ -286,6 +379,10 @@ function App() {
           </p>
         </div>
         <div className="suit-area">
+          <div className="jarvis-bubble" aria-live="polite">
+            <span><i /> DS ASSISTANT</span>
+            <p>{greeting}. {hoveredSection ? `${hoveredSection.label} is ready.` : 'Select a section to get started.'}</p>
+          </div>
           <Exosuit activeZone={hoveredPanel} />
           <nav className="suit-nav" aria-label="Portfolio sections">
             {panels.map(({ id, label, icon: Icon }, index) => (
@@ -299,7 +396,11 @@ function App() {
                 onBlur={() => setHoveredPanel(null)}
               >
                 <span className="link-line" />
-                <span className="link-label"><Icon size={19} /><b>{label}</b></span>
+                <span className="link-label">
+                  <small>0{index + 1}</small>
+                  <Icon size={19} />
+                  <b>{label}</b>
+                </span>
               </button>
             ))}
           </nav>
