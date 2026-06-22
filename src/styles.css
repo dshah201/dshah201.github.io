@@ -98,7 +98,7 @@ header {
 .suit-area { min-height: 0; display: grid; place-items: center; position: relative; }
 .jarvis-bubble { position: absolute; z-index: 9; top: 10px; left: calc(50% + 82px); width: min(265px, 25vw); padding: 12px 14px; border: 1px solid rgba(145,179,186,.28); border-left: 2px solid var(--red); background: rgba(21,24,22,.82); backdrop-filter: blur(9px); box-shadow: 0 10px 25px rgba(0,0,0,.18); }
 .jarvis-bubble::before { content: ''; position: absolute; left: 28px; bottom: -27px; width: 48px; height: 27px; border-left: 1px solid rgba(145,179,186,.34); transform: skewX(-42deg); transform-origin: top; }
-.jarvis-bubble::after { content: ''; position: absolute; left: 47px; bottom: -29px; width: 6px; height: 6px; border: 1px solid var(--red); border-radius: 50%; background: #151816; }
+.jarvis-bubble::after { display: none; }
 .jarvis-bubble > span { display: flex; align-items: center; gap: 6px; color: #78847e; font: 400 8px 'IBM Plex Mono'; letter-spacing: .08em; }
 .jarvis-bubble > span i { width: 5px; height: 5px; border-radius: 50%; background: #8eb395; box-shadow: 0 0 7px rgba(142,179,149,.6); animation: statusPulse 1.8s infinite; }
 .jarvis-bubble p { margin: 7px 0 0; color: #d2cfc5; font-size: 13px; line-height: 1.45; }
@@ -357,7 +357,6 @@ footer {
   .suit-area { width: 100%; display: flex; flex-direction: column; }
   .jarvis-bubble { position: relative; top: auto; left: auto; order: 0; width: calc(100% - 44px); max-width: calc(100vw - 44px); margin: 8px auto 4px; transform: none; }
   .jarvis-bubble::before { left: 50%; bottom: -19px; width: 1px; height: 19px; border: 0; background: rgba(145,179,186,.34); transform: none; }
-  .jarvis-bubble::after { left: calc(50% - 3px); bottom: -24px; }
   .suit-wrap { width: 100%; height: 570px; min-height: 570px; }
   .suit { height: 530px; max-width: 82%; }
   .orbit-one { width: 90vw; }.orbit-two { width: 66vw; }
