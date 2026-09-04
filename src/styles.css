@@ -289,6 +289,38 @@ footer {
 .flow-field > span { position: absolute; z-index: 1; width: 3px; top: 0; bottom: 0; left: 35%; background: rgba(21,35,83,.72); transform: skewX(-14deg); }
 .flow-1 .flow-field > span { opacity: 0; }.flow-2 .flow-field > span { width: 15px; }.flow-3 .flow-field > span { width: 30px; }.flow-4 .flow-field > span { width: 46px; }
 
+.fpga-visual { display: grid; place-items: center; background: radial-gradient(circle at 50% 42%, rgba(145,179,186,.11), transparent 45%), #151815; }
+.logic-chip { width: 138px; height: 96px; position: relative; display: grid; place-items: center; border: 1px solid rgba(222,217,202,.55); background: #252923; box-shadow: 0 0 0 10px rgba(145,179,186,.035), 0 15px 32px rgba(0,0,0,.3); }
+.logic-chip::before, .logic-chip::after { content: ''; position: absolute; left: -32px; right: -32px; height: 12px; background: repeating-linear-gradient(90deg, rgba(222,217,202,.5) 0 4px, transparent 4px 12px); }
+.logic-chip::before { top: 16px; }
+.logic-chip::after { bottom: 16px; }
+.logic-chip span { z-index: 2; color: #ded9ca; font: 400 18px 'IBM Plex Mono'; letter-spacing: .06em; }
+.logic-chip i { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--red); box-shadow: 0 0 9px rgba(231,120,78,.65); }
+.logic-chip i:nth-child(2) { left: 16px; top: 14px; }
+.logic-chip i:nth-child(3) { right: 16px; top: 14px; }
+.logic-chip i:nth-child(4) { left: 16px; bottom: 14px; }
+.logic-chip i:nth-child(5) { right: 16px; bottom: 14px; }
+.logic-traces { position: absolute; inset: 24px 18px; pointer-events: none; }
+.logic-traces span { position: absolute; height: 1px; background: rgba(145,179,186,.45); }
+.logic-traces span:nth-child(1) { width: 36%; left: 0; top: 14%; }
+.logic-traces span:nth-child(2) { width: 29%; right: 0; top: 27%; }
+.logic-traces span:nth-child(3) { width: 32%; left: 0; top: 49%; }
+.logic-traces span:nth-child(4) { width: 26%; right: 0; top: 58%; }
+.logic-traces span:nth-child(5) { width: 39%; left: 0; top: 78%; }
+.logic-traces span:nth-child(6) { width: 31%; right: 0; top: 82%; }
+.truth-table { position: absolute; right: 20px; bottom: 18px; display: flex; flex-direction: column; align-items: flex-end; gap: 3px; color: #d2cfc4; }
+.truth-table small { color: #81877f; font: 400 8px 'IBM Plex Mono'; }
+.truth-table b { color: var(--cyan); font: 400 16px 'IBM Plex Mono'; }
+
+.market-visual { display: grid; place-items: center; background: linear-gradient(180deg, #151815, #20231f); }
+.market-grid { position: absolute; inset: 16px; display: grid; grid-template-columns: repeat(6, 1fr); border-left: 1px solid rgba(222,217,202,.08); border-bottom: 1px solid rgba(222,217,202,.08); }
+.market-grid i { border-right: 1px solid rgba(222,217,202,.055); }
+.market-grid::before { content: ''; position: absolute; inset: 33% 0 auto; height: 1px; background: rgba(222,217,202,.055); box-shadow: 0 44px 0 rgba(222,217,202,.055); }
+.market-visual svg { width: 82%; height: 68%; z-index: 2; overflow: visible; }
+.market-area { fill: rgba(145,179,186,.14); }
+.market-line { fill: none; stroke: #91b3ba; stroke-width: 4; stroke-linejoin: round; stroke-linecap: round; filter: drop-shadow(0 0 8px rgba(145,179,186,.24)); }
+.market-badge { position: absolute; right: 22px; top: 20px; padding: 9px 10px; border: 1px solid rgba(231,120,78,.44); color: #e7a081; background: rgba(21,24,22,.82); font: 400 9px/1.35 'IBM Plex Mono'; letter-spacing: .08em; text-align: right; }
+
 
 .academic-card { padding-top: 35px; }
 .academic-card > svg { color: var(--cyan); }
@@ -302,7 +334,7 @@ footer {
 .highlight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding-top: 35px; }
 .highlight-grid div { min-height: 170px; padding: 22px; border: 1px solid var(--line); background: rgba(231,120,78,.035); }
 .highlight-grid strong { color: var(--cyan); font-size: 48px; line-height: 1; }
-.highlight-grid div:nth-child(3) strong { font-size: 31px; }
+.highlight-grid div:nth-child(5) strong { font-size: 31px; }
 .highlight-grid p { margin: 20px 0 0; color: #b8b8af; font-size: 15px; line-height: 1.5; }
 
 .resume-list { padding-top: 25px; }

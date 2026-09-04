@@ -19,58 +19,76 @@ const projects = [
     number: '01',
     category: 'Netramind Innovations',
     title: 'Retinal Image Segmentation',
-    meta: 'PyTorch · U-Net++ · Medical Imaging',
-    text: 'A computer vision pipeline for segmenting retinal non-perfusion regions in fluorescein angiography images.',
-    result: 'Preprocessing · training · Dice / IoU evaluation',
+    meta: 'PyTorch | U-Net++ | Medical Imaging',
+    text: 'Built an ultra-widefield fluorescein angiography segmentation pipeline for retinal total area and non-perfusion area analysis.',
+    result: '0.963 TA Dice | 0.879 NPA AUC | 624 multiframe images',
   },
   {
     type: 'generation',
     number: '02',
     category: 'Lockheed Martin',
     title: 'Generative Image Service',
-    meta: 'Python · SDXL · REST APIs',
-    text: 'An internal service for generating and processing images with configurable model parameters and automated workflows.',
-    result: 'API design · model orchestration · image processing',
+    meta: 'Python | SDXL | REST APIs | LangChain',
+    text: 'Wrapped Stable Diffusion XL behind JSON-based inference requests with configurable resolution, guidance scale, seed, and batch size.',
+    result: 'Internal AI workflow | multimodal prototyping | API orchestration',
   },
   {
     type: 'airfoil',
     number: '03',
     category: 'University of Florida',
     title: 'Transonic Airfoil Simulation',
-    meta: 'Python · FORTRAN · Numerical Methods',
-    text: 'Simulation software used to study airflow around airfoils under several transonic flight conditions.',
-    result: 'Mach 0.5–1.5 · aerodynamic modeling',
+    meta: 'Python | FORTRAN | CFD',
+    text: 'Adapted a compressible-flow solver to compare conventional, supercritical, and diamond airfoils across subsonic through supersonic regimes.',
+    result: 'Mach 0.5, 0.8, 1.2, 1.5 | 4,000-word paper',
     link: '/papers/CFD-Analysis-of-Airfoil-Shapes.pdf',
     linkLabel: 'View research paper',
   },
   {
-    type: 'digit',
+    type: 'fpga',
     number: '04',
+    category: 'Hardware project',
+    title: 'FPGA Logic Design',
+    meta: 'SystemVerilog | Vivado | Boolean Board',
+    text: 'Designed a 6-input, 2-output combinational logic system from truth tables and Karnaugh maps, then verified and deployed it on FPGA hardware.',
+    result: '64-entry truth table | testbenches | LUT comparison',
+  },
+  {
+    type: 'digit',
+    number: '05',
     category: 'Personal ML project',
     title: 'Draw-a-Digit',
-    meta: 'Python · TensorFlow · Neural Networks',
-    text: 'An interactive digit classifier trained on MNIST. Users can draw a number and see the model’s prediction and confidence scores.',
-    result: 'Interactive prediction UI',
+    meta: 'Python | TensorFlow/Keras | OpenCV',
+    text: 'Trained a digit classifier on MNIST and built an OpenCV pipeline that turns real handwritten inputs into model-ready tensors.',
+    result: '60,000+ training images | live prediction UI',
     link: 'https://github.com/dshah201/drawing-digits-nn',
     linkLabel: 'View GitHub repository',
   },
   {
     type: 'sensor',
-    number: '05',
+    number: '06',
     category: 'Embedded systems',
-    title: 'Embedded Sensor Monitor',
-    meta: 'C/C++ · Microcontrollers · I2C',
-    text: 'A microcontroller project that reads temperature sensors over I2C and displays the measurements on an LCD.',
-    result: 'Sensor-to-display prototype',
+    title: 'Embedded Sensor Interface',
+    meta: 'Raspberry Pi Pico | I2C | CircuitPython',
+    text: 'Connected a TMP102 temperature sensor, LCD, button, and LED peripherals using I2C and GPIO, then debugged transactions with a logic analyzer.',
+    result: 'Register-level reads | Analog Discovery 3 validation',
+  },
+  {
+    type: 'market',
+    number: '07',
+    category: 'Research project',
+    title: 'Economic Forecasting Research',
+    meta: 'Predictive modeling | Financial research | Presentation',
+    text: 'Built a predictive economic research project around financial indicators and translated the work into a competition-ready analysis.',
+    result: '7th nationally | BPA Economic Research',
   },
   {
     type: 'app',
-    number: '06',
+    number: '08',
     category: 'iOS project',
     title: 'Mighty Calculator',
-    meta: 'Swift · iOS · App Store',
-    text: 'A multi-purpose calculator and converter that I designed and built in Swift.',
-    result: '200+ downloads · 5.0 rating',
+    meta: 'Swift | iOS | App lifecycle',
+    text: 'Designed and built a multi-purpose calculator and converter in Swift, including UI, application logic, testing, and release workflow.',
+    result: '200+ downloads | 4 continents | 5-star rating',
   },
 ]
 
@@ -120,8 +138,8 @@ const panels = [
 ]
 
 const resumes = [
-  ['Hardware', 'Circuits, sensors, and embedded systems', '/resumes/Dhruv-Shah-Hardware-Resume.pdf'],
-  ['Software', 'APIs, applications, and algorithms', '/resumes/Dhruv-Shah-Software-Resume.pdf'],
+  ['Hardware', 'FPGA, embedded systems, sensors, and digital design', '/resumes/Dhruv-Shah-Hardware-Resume.pdf'],
+  ['AI/ML', 'Medical imaging, computer vision, and model pipelines', '/resumes/Dhruv-Shah-AI-ML-Resume.pdf'],
 ]
 
 function Exosuit({ activeZone }) {
@@ -191,8 +209,8 @@ function PanelContent({ id }) {
   if (id === 'projects') {
     return <>
       <div className="project-index">
-        <div className="index-orb"><i /><i /><span>06</span></div>
-        <div><small>PROJECT INDEX</small><strong>Six technical case studies</strong></div>
+        <div className="index-orb"><i /><i /><span>08</span></div>
+        <div><small>PROJECT INDEX</small><strong>Eight technical case studies</strong></div>
         <span className="index-state"><i /> ONLINE</span>
       </div>
       <div className="project-gallery">{projects.map((project) => (
@@ -216,10 +234,10 @@ function PanelContent({ id }) {
   if (id === 'experience') {
     return <>
       <div className="timeline">
-        <article><time>2026</time><OrgLogo type="netramind" /><div><h3>Netramind Innovations</h3><small>AI/ML Medical Imaging Intern</small><p>Developing deep-learning pipelines for retinal ischemia segmentation.</p></div></article>
-        <article><time>2025</time><OrgLogo type="lockheed" /><div><h3>Lockheed Martin</h3><small>Software Engineering Intern</small><p>Built a generative-image platform using SDXL, Python APIs, and model orchestration.</p></div></article>
-        <article><time>2024</time><OrgLogo type="uf" /><div><h3>University of Florida</h3><small>Computational Research Assistant</small><p>Developed transonic airfoil simulation software in Python and FORTRAN.</p><a className="experience-link" href="/papers/CFD-Analysis-of-Airfoil-Shapes.pdf" target="_blank" rel="noreferrer">View paper <ExternalLink size={14} /></a></div></article>
-        <article><time>CMU</time><OrgLogo type="cmu" /><div><h3>First-Year Orientation</h3><small>Orientation Counselor</small><p>Helped welcome incoming students and supported them through their transition to Carnegie Mellon.</p></div></article>
+        <article><time>2026</time><OrgLogo type="netramind" /><div><h3>Netramind Innovations</h3><small>AI/ML Medical Imaging Intern</small><p>Benchmarked U-Net, U-Net++, MANet, MAE-pretrained, dual-decoder, and CNN-RNN variants for retinal TA/NPA segmentation, with the best model reaching 0.963 TA Dice and 0.879 NPA AUC.</p></div></article>
+        <article><time>2025</time><OrgLogo type="lockheed" /><div><h3>Lockheed Martin</h3><small>Software Engineering Intern</small><p>Built a Python SDXL wrapper with REST endpoints and JSON inference controls for resolution, seed, guidance scale, and batch size, plus LangChain-based orchestration prototypes.</p></div></article>
+        <article><time>2024</time><OrgLogo type="uf" /><div><h3>University of Florida</h3><small>Computational Research Assistant</small><p>Adapted the HyBurn FORTRAN CFD solver for three airfoil families across Mach 0.5 to 1.5, then analyzed lift, drag, pressure fields, and shock behavior.</p><a className="experience-link" href="/papers/CFD-Analysis-of-Airfoil-Shapes.pdf" target="_blank" rel="noreferrer">View paper <ExternalLink size={14} /></a></div></article>
+        <article><time>CMU</time><OrgLogo type="cmu" /><div><h3>First-Year Orientation</h3><small>Orientation Counselor</small><p>Selected to mentor a group of 30 incoming students during CMU Orientation and coordinate with university staff during first-year programming.</p></div></article>
       </div>
       <p className="trademark-note">Organization names and marks belong to their respective owners and are shown only to identify affiliations. No endorsement is implied.</p>
     </>
@@ -229,22 +247,24 @@ function PanelContent({ id }) {
     return <div className="academic-card">
       <GraduationCap size={38} />
       <h3>Carnegie Mellon University</h3>
-      <p>B.S. in Electrical and Computer Engineering<br />Minor in Artificial Intelligence</p>
+      <p>B.S. in Electrical and Computer Engineering<br />Minor in AI</p>
       <strong>3.73 QPA</strong>
-      <div className="academic-honor"><Award size={19} /> Dean’s List</div>
+      <div className="academic-honor"><Award size={19} /> Dean's List</div>
       <div className="course-tags">
-        <span>Digital Systems</span><span>Data Structures</span><span>Linear Algebra</span>
-        <span>Probability</span><span>Computer Engineering</span>
+        <span>Digital Systems</span><span>Data Structures & Algorithms</span><span>Signals and Systems</span>
+        <span>Discrete Mathematics</span><span>Probability</span>
       </div>
     </div>
   }
 
   if (id === 'accomplishments') {
     return <div className="highlight-grid">
-      <div><strong>200+</strong><p>App Store downloads across multiple continents</p></div>
-      <div><strong>7th</strong><p>National research placement for predictive economic modeling</p></div>
-      <div><strong>Dean’s List</strong><p>Academic distinction at Carnegie Mellon University</p></div>
-      <div><strong>3</strong><p>Technical domains: intelligent software, embedded hardware, and research</p></div>
+      <div><strong>0.963</strong><p>Best retinal total-area Dice score from Netramind segmentation work</p></div>
+      <div><strong>7th</strong><p>National BPA Economic Research placement for predictive economic modeling</p></div>
+      <div><strong>1550</strong><p>SAT score, alongside a 35 ACT and National Merit Finalist recognition</p></div>
+      <div><strong>13th</strong><p>National Science Olympiad Elastic-Launched Glider placement</p></div>
+      <div><strong>Dean's List</strong><p>Academic distinction at Carnegie Mellon University</p></div>
+      <div><strong>200+</strong><p>Downloads for an iOS calculator project across 4 continents</p></div>
     </div>
   }
 
@@ -257,7 +277,7 @@ function PanelContent({ id }) {
   }
 
   return <div className="contact-panel">
-    <p>I’m interested in internships, research, and projects related to wearable technology, embedded systems, circuit design, and ML/AI.</p>
+    <p>I'm interested in internships, research, and projects related to wearable technology, embedded systems, circuit design, and ML/AI.</p>
     <a href="mailto:shahdhruv741@gmail.com"><Mail size={20} /> Email me <ExternalLink size={17} /></a>
     <a href="https://github.com/dshah201" target="_blank" rel="noreferrer"><Github size={20} /> GitHub <ExternalLink size={17} /></a>
     <a href="https://www.linkedin.com/in/dhruvshah07" target="_blank" rel="noreferrer"><Linkedin size={20} /> LinkedIn <ExternalLink size={17} /></a>
@@ -291,16 +311,16 @@ function ProjectVisual({ type }) {
   if (type === 'app') {
     return <div className="project-visual app-visual">
       <div className="app-icon"><span>MC</span></div>
-      <div className="app-copy"><small>BUILT FOR IOS</small><strong>Mighty<br />Calculator</strong><span>★★★★★</span></div>
+      <div className="app-copy"><small>BUILT FOR IOS</small><strong>Mighty<br />Calculator</strong><span>5.0 rating</span></div>
       <div className="phone-preview"><i /><i /><i /></div>
     </div>
   }
 
   if (type === 'sensor') {
     return <div className="project-visual sensor-visual">
-      <div className="board"><i /><i /><i /><i /><span>MCU</span></div>
+      <div className="board"><i /><i /><i /><i /><span>PICO</span></div>
       <svg viewBox="0 0 300 100"><path d="M8 51 H58 L69 30 L84 73 L100 51 H157 L171 40 L185 62 L199 51 H292" /></svg>
-      <div className="sensor-reading"><small>TEMP</small><strong>23.4°</strong></div>
+      <div className="sensor-reading"><small>TMP102</small><strong>23.4°</strong></div>
     </div>
   }
 
@@ -310,9 +330,9 @@ function ProjectVisual({ type }) {
         <div className="retina-eye"><i /></div>
         <small>INPUT</small>
       </div>
-      <div className="retina-frame mask"><div className="retina-mask mask-solid" /><small>MASK</small></div>
+      <div className="retina-frame mask"><div className="retina-mask mask-solid" /><small>TA MASK</small></div>
       <div className="retina-frame mask"><div className="retina-mask mask-vessels" /><small>VESSELS</small></div>
-      <div className="retina-frame mask"><div className="retina-mask mask-region" /><small>REGION</small></div>
+      <div className="retina-frame mask"><div className="retina-mask mask-region" /><small>NPA</small></div>
       <div className="analysis-scan" />
     </div>
   }
@@ -337,6 +357,35 @@ function ProjectVisual({ type }) {
         </div>
       ))}
       <div className="analysis-scan" />
+    </div>
+  }
+
+  if (type === 'fpga') {
+    return <div className="project-visual fpga-visual">
+      <div className="logic-chip">
+        <span>FPGA</span>
+        <i /><i /><i /><i />
+      </div>
+      <div className="logic-traces">
+        {Array.from({ length: 6 }).map((_, index) => <span key={index} />)}
+      </div>
+      <div className="truth-table">
+        <small>64 ROWS</small>
+        <b>2 OUT</b>
+      </div>
+    </div>
+  }
+
+  if (type === 'market') {
+    return <div className="project-visual market-visual">
+      <div className="market-grid">
+        <i /><i /><i /><i /><i /><i />
+      </div>
+      <svg viewBox="0 0 320 140" aria-hidden="true">
+        <path className="market-area" d="M0 112 L36 92 L72 104 L108 62 L144 76 L180 48 L216 58 L252 24 L288 42 L320 18 L320 140 L0 140 Z" />
+        <path className="market-line" d="M0 112 L36 92 L72 104 L108 62 L144 76 L180 48 L216 58 L252 24 L288 42 L320 18" />
+      </svg>
+      <div className="market-badge">NATIONAL<br />TOP 10</div>
     </div>
   }
 
@@ -374,8 +423,8 @@ function App() {
       <section className="hero">
         <div className="hero-intro-wrap">
           <p className="hero-intro">
-            I’m interested in wearable technology, embedded systems, circuit design, and ML/AI. I especially
-            enjoy projects that combine hardware and software to interact with the physical world.
+            I am interested in wearable technology, embedded systems, circuit design, and ML/AI. I like projects
+            where sensors, models, and hardware have to cooperate in the real world.
           </p>
         </div>
         <div className="suit-area">
@@ -408,8 +457,8 @@ function App() {
       </section>
 
       <footer>
-        <span>CMU ECE · PITTSBURGH</span>
-        <span>DHRUV SHAH · 2026</span>
+        <span>CMU ECE | PITTSBURGH</span>
+        <span>DHRUV SHAH | 2026</span>
       </footer>
 
       <div className={`info-drawer ${activePanel ? 'open' : ''}`} aria-hidden={!activePanel}>
