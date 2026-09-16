@@ -24,8 +24,17 @@ const projects = [
     result: '0.963 TA Dice | 0.879 NPA AUC | 624 multiframe images',
   },
   {
-    type: 'generation',
+    type: 'auv',
     number: '02',
+    category: 'TartanAUV',
+    title: 'Autonomous Underwater Vehicle Electronics',
+    meta: 'Altium | PCB Design | UART | I2C',
+    text: 'Electrical subteam work for Baby Sub, designing custom PCBs that integrate motor and sensor components on an autonomous underwater vehicle.',
+    result: 'RS-232/RS-485 | oscilloscopes | logic analyzer debug',
+  },
+  {
+    type: 'generation',
+    number: '03',
     category: 'Lockheed Martin',
     title: 'Generative Image Service',
     meta: 'Python | SDXL | REST APIs | LangChain',
@@ -34,7 +43,7 @@ const projects = [
   },
   {
     type: 'airfoil',
-    number: '03',
+    number: '04',
     category: 'University of Florida',
     title: 'Transonic Airfoil Simulation',
     meta: 'Python | FORTRAN | CFD',
@@ -45,7 +54,7 @@ const projects = [
   },
   {
     type: 'fpga',
-    number: '04',
+    number: '05',
     category: 'Hardware project',
     title: 'FPGA Logic Design',
     meta: 'SystemVerilog | Vivado | Boolean Board',
@@ -54,7 +63,7 @@ const projects = [
   },
   {
     type: 'digit',
-    number: '05',
+    number: '06',
     category: 'Personal ML project',
     title: 'Draw-a-Digit',
     meta: 'Python | TensorFlow/Keras | OpenCV',
@@ -65,7 +74,7 @@ const projects = [
   },
   {
     type: 'sensor',
-    number: '06',
+    number: '07',
     category: 'Embedded systems',
     title: 'Embedded Sensor Interface',
     meta: 'Raspberry Pi Pico | I2C | CircuitPython',
@@ -74,7 +83,7 @@ const projects = [
   },
   {
     type: 'market',
-    number: '07',
+    number: '08',
     category: 'Research project',
     title: 'Economic Forecasting Research',
     meta: 'Predictive modeling | Financial research | Presentation',
@@ -83,7 +92,7 @@ const projects = [
   },
   {
     type: 'app',
-    number: '08',
+    number: '09',
     category: 'iOS project',
     title: 'Mighty Calculator',
     meta: 'Swift | iOS | App lifecycle',
@@ -139,7 +148,7 @@ const panels = [
 
 const resumes = [
   ['Hardware', 'FPGA, embedded systems, sensors, and digital design', '/resumes/Dhruv-Shah-Hardware-Resume.pdf'],
-  ['AI/ML', 'Medical imaging, computer vision, and model pipelines', '/resumes/Dhruv-Shah-AI-ML-Resume.pdf'],
+  ['Software', 'APIs, applications, ML pipelines, and algorithms', '/resumes/Dhruv-Shah-Software-Resume.pdf'],
 ]
 
 function Exosuit({ activeZone }) {
@@ -209,8 +218,8 @@ function PanelContent({ id }) {
   if (id === 'projects') {
     return <>
       <div className="project-index">
-        <div className="index-orb"><i /><i /><span>08</span></div>
-        <div><small>PROJECT INDEX</small><strong>Eight technical case studies</strong></div>
+        <div className="index-orb"><i /><i /><span>09</span></div>
+        <div><small>PROJECT INDEX</small><strong>Nine technical case studies</strong></div>
         <span className="index-state"><i /> ONLINE</span>
       </div>
       <div className="project-gallery">{projects.map((project) => (
@@ -337,6 +346,25 @@ function ProjectVisual({ type }) {
     </div>
   }
 
+  if (type === 'auv') {
+    return <div className="project-visual auv-visual">
+      <div className="water-lines"><i /><i /><i /></div>
+      <div className="sub-body">
+        <span className="sub-nose" />
+        <span className="sub-core">PCB</span>
+        <span className="sub-fin top" />
+        <span className="sub-fin bottom" />
+        <span className="sub-tail" />
+      </div>
+      <div className="auv-bus">
+        <span>UART</span>
+        <i />
+        <span>I2C</span>
+      </div>
+      <div className="signal-pings"><i /><i /><i /></div>
+    </div>
+  }
+
   if (type === 'generation') {
     return <div className="project-visual generation-visual">
       <div className="generation-node input-node"><small>REQUEST</small><strong>JSON</strong></div>
@@ -415,7 +443,7 @@ function App() {
         <a className="logo" href="#" aria-label="Dhruv Shah home"><span>DS</span></a>
         <div className="title">
           <h1>Dhruv Shah</h1>
-          <p>Electrical & Computer Engineering student at Carnegie Mellon.</p>
+          <p>ECE student focused on digital design, RTL, firmware, and wearable systems.</p>
         </div>
         <a className="email-link" href="mailto:shahdhruv741@gmail.com">Say hello <Mail size={18} /></a>
       </header>
@@ -423,8 +451,8 @@ function App() {
       <section className="hero">
         <div className="hero-intro-wrap">
           <p className="hero-intro">
-            I am interested in wearable technology, embedded systems, circuit design, and ML/AI. I like projects
-            where sensors, models, and hardware have to cooperate in the real world.
+            I am interested in wearable technology, digital design, RTL, firmware, circuit design, and ML/AI. I like
+            projects where sensors, models, and hardware have to cooperate in the real world.
           </p>
         </div>
         <div className="suit-area">
